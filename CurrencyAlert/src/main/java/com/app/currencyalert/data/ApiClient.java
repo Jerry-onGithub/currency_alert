@@ -6,7 +6,6 @@ import retrofit2.converter.scalars.ScalarsConverterFactory;
 public class ApiClient {
 
     // Base Url
-    //public static final String BASE_URL = "https://8hbuuj3yt1.execute-api.us-west-2.amazonaws.com/2022/";
     public static final String BASE_URL = "https://data.messari.io/api/v1/assets/";
 
     public static Retrofit retrofit = null;
