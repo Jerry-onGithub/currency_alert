@@ -8,12 +8,8 @@ public interface ApiInterface {
 
     @GET("btc/metrics")
     Call<String> getData();
-
-/*    @GET("getUniversity")
-    Call<String> getUniversityDetail(@Query("name") String name);
-
-    @GET("getProgramsListByField")
-    Call<String> getProgramsAndFieldsList();*/
+    
+    //can add more here
 
 }
 
