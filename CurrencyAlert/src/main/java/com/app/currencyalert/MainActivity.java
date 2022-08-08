@@ -57,26 +57,20 @@ public class MainActivity extends AppCompatActivity {
             public void run() {
                 // Do something here on the main thread
                 Log.d("Handlers", "Called on main thread");
-                // Repeat this the same runnable code block again another 2 seconds
-                // 'this' is referencing the Runnable object
+                               
                 GetData rs = new GetData();
                 rs.getResponse(new CustomCallback(){
                     @Override
                     public void onSuccess(Btc bitcoin){
-                        System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>> "+Math.round(Float.valueOf(bitcoin.getPrice())));
-                        String num=String.format("%,d", Math.round(Float.valueOf(bitcoin.getPrice())));
-
-                        //System.out.println(" -------------------------------- "+Integer.valueOf(Math.round(Float.valueOf(bitcoin.getPrice()))));
+                        String num=String.format("%,d", Math.round(Float.valueOf(bitcoin.getPrice())));                 
 
                         int val = Integer.valueOf(Math.round(Float.valueOf(bitcoin.getPrice())));
                         if(val < 26500){
                             //reminderNotification(num);
-
-                            System.out.println("?????????????????>>>>>>>>>>>>>>>>>>>>>>>>");
+                          
                             Intent intent = new Intent(MainActivity.this,NotificationService.class);
                             intent.putExtra("value", "$"+num);
-                            startService( intent) ;
-
+                            startService(intent);
                         }
                     }
                     @Override
@@ -95,8 +89,7 @@ public class MainActivity extends AppCompatActivity {
         GetData rs = new GetData();
         rs.getResponse(new CustomCallback(){
             @Override
-            public void onSuccess(Btc bitcoin){
-                System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>> "+Math.round(Float.valueOf(bitcoin.getPrice())));
+            public void onSuccess(Btc bitcoin){                
                 String num=String.format("%,d", Math.round(Float.valueOf(bitcoin.getPrice())));
 
                 date.setText(bitcoin.getTime());
@@ -120,8 +113,7 @@ public class MainActivity extends AppCompatActivity {
         PendingIntent pendingIntent = PendingIntent.getBroadcast(MainActivity.this,123,intent,0);
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
-            alarmManager.setExact(AlarmManager.RTC_WAKEUP,timeInSecs/* + (1 * 60 * 1000)*/,pendingIntent);
-            System.out.println("?????????????????>>>>>>>>>>>>>>>>>>>>>>>>");
+            alarmManager.setExact(AlarmManager.RTC_WAKEUP,timeInSecs/* + (1 * 60 * 1000)*/, pendingIntent);     //modify this according to your time interval you'd need it to check     
         }
     }
 
